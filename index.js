@@ -1,6 +1,3 @@
-// ===============================
-// index.js
-// ===============================
 const express = require('express');
 const crypto = require('crypto');
 const path = require('path');
@@ -14,7 +11,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'apiuser',              // ✅ gunakan user baru
-  password: 'Oranggabut712!',   // ✅ password MySQL kamu
+  password: 'Oranggabut712!',   // ✅ password MySQL baru kamu
   database: 'apikeydb'
 });
 
@@ -73,6 +70,5 @@ app.post('/cekapi', (req, res) => {
   });
 });
 
-// 🚀 Jalankan server
 const PORT = 3000;
 app.listen(PORT, () => console.log(`🚀 Server berjalan di http://localhost:${PORT}`));
