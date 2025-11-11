@@ -1,3 +1,6 @@
+// ===============================
+// index.js
+// ===============================
 const express = require('express');
 const crypto = require('crypto');
 const path = require('path');
@@ -11,7 +14,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'apiuser',              // ✅ gunakan user baru
-  password: 'Oranggabut712!',    // ✅ password MySQL baru kamu
+  password: 'Oranggabut712!',   // ✅ password MySQL kamu
   database: 'apikeydb'
 });
 
@@ -27,7 +30,7 @@ db.connect(err => {
 // 🔑 Fungsi untuk generate API key
 function generateApiKey() {
   const randomBytes = crypto.randomBytes(8).toString('hex'); // 16 karakter hex
-  return sk-sm-v1-${randomBytes};
+  return `sk-sm-v1-${randomBytes}`;
 }
 
 // 📦 Endpoint untuk generate API key
@@ -42,7 +45,7 @@ app.post('/create', (req, res) => {
       return res.status(500).json({ success: false, message: 'Gagal menyimpan API key' });
     }
 
-    console.log(✅ API Key berhasil disimpan: ${apiKey});
+    console.log(`✅ API Key berhasil disimpan: ${apiKey}`);
     res.json({ success: true, apiKey });
   });
 });
@@ -70,5 +73,6 @@ app.post('/cekapi', (req, res) => {
   });
 });
 
+// 🚀 Jalankan server
 const PORT = 3000;
-app.listen(PORT, () => console.log(🚀 Server berjalan di http://localhost:${PORT}));
+app.listen(PORT, () => console.log(`🚀 Server berjalan di http://localhost:${PORT}`));
